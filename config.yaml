@@ -1,0 +1,36 @@
+paths:
+  dataset_dir: Dataset
+  output_dir:  cdi_output
+
+data:
+  concentration_file: "1000-2500-5000-7500 ppm.xlsx"
+  flow_file:          "vary flow rate.xlsx"
+  potential_file:     "Vary potential-1000ppm.xlsx"
+  sheet_meta:
+    concentration:
+      fixed_flow:      3
+      fixed_potential: 1.8
+    flow:
+      fixed_conc:      1000
+      fixed_potential: 1.8
+    potential:
+      fixed_conc: 1000
+      fixed_flow: 3
+
+gp:
+  n_iter:           300
+  lr:               0.05
+  noise_constraint: 1.0e-4   # lower bound on GP noise variance
+
+calibration:
+  nominal_z:    1.645   # z-score for 90 % nominal CI
+  target_low:   0.85
+  target_high:  0.95
+  alpha_search: [0.05, 20.0, 0.05]   # [start, stop, step] for multiplier sweep
+
+pareto:
+  grid_points: 30        # per-axis resolution for conc/flow/potential grids
+
+figures:
+  dpi:    300
+  format: pdf            # pdf for vector quality; switch to png if needed
