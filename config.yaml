@@ -22,6 +22,16 @@ gp:
   lr:               0.05
   noise_constraint: 1.0e-4   # lower bound on GP noise variance
 
+  # Grid search — set enabled: true to tune n_iter and lr before the main run.
+  # Best params found are printed and used automatically for all subsequent GP fits.
+  # Adds ~2–5 min on GPU; disable for quick reruns.
+  grid_search:
+    enabled: false
+    n_iter_values:  [100, 200, 300, 500]
+    lr_values:      [0.001, 0.01, 0.05, 0.1]
+    noise_values:   [1.0e-5, 1.0e-4, 1.0e-3]
+    cv_folds:       3      # inner k-fold on training data (not full LOCO — too slow)
+
 calibration:
   nominal_z:    1.645   # z-score for 90 % nominal CI
   target_low:   0.85
@@ -33,4 +43,4 @@ pareto:
 
 figures:
   dpi:    300
-  format: pdf            # pdf for vector quality; switch to png if needed
+  format: png
