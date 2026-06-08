@@ -1,0 +1,10 @@
+pandas==2.3.1
+openpyxl==3.1.5
+matplotlib==3.10.3
+scipy==1.16.1
+scikit-learn==1.7.1
+gpytorch==1.14
+PyYAML==6.0.2
+
+# GPU build — install separately via https://pytorch.org/get-started/locally/
+# torch==2.8.0+cu128
