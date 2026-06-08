@@ -1,0 +1,13 @@
+{
+  "C_in": 500.0,
+  "Q": 9.482758620689655,
+  "V": 0.8,
+  "SEC_pred": 15.825979132706646,
+  "SEC_lo": 14.044484648345106,
+  "SEC_hi": 17.607473617068187,
+  "R_kappa_pred": 0.36684910682170774,
+  "R_kappa_lo": 0.3296290448464348,
+  "R_kappa_hi": 0.4040691687969807,
+  "near_observed": false,
+  "label": "model-suggested candidate for experimental validation (PROVISIONAL \u2014 subject to corrected-pipeline rerun)"
+}

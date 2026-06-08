@@ -1,0 +1,8 @@
+{
+  "include_flow": true,
+  "ls_q_sec": 15.955112387581929,
+  "ls_q_rk": 0.06463292663174217,
+  "q_unique": 3,
+  "q_median": 7.5,
+  "justification": "Flow included in Stage 2. ARD lengthscale for Q in standardised space: SEC=15.96, R_kappa=0.06 (threshold 3.0); 3 unique flow values."
+}
