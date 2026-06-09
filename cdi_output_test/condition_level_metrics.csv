@@ -1,0 +1,4 @@
+conc,flow,potential,n_cycles,lk_mae,lk_rmse,sec_mae,sec_rmse,rkp_mae,rkp_rmse
+1000,2,1.8,4,0.0,0.0,0.0,0.0,0.0,0.0
+1000,3,1.8,4,0.0,0.0,0.0,0.0,0.0,0.0
+2500,3,1.8,4,0.0,0.0,0.0,0.0,0.0,0.0

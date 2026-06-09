@@ -32,15 +32,31 @@ gp:
     noise_values:   [1.0e-5, 1.0e-4, 1.0e-3]
     cv_folds:       3      # inner k-fold on training data (not full LOCO — too slow)
 
+prediction_mode: "retrospective"   # retrospective (uses observed V_w) | prospective (estimates V_w)
+
 calibration:
   nominal_z:    1.645   # z-score for 90 % nominal CI
   target_low:   0.85
   target_high:  0.95
   alpha_search: [0.05, 20.0, 0.05]   # [start, stop, step] for multiplier sweep
+  nested:       false                 # true = per-fold nested calibration (avoid leakage)
 
 pareto:
   grid_points: 30        # per-axis resolution for conc/flow/potential grids
+  sec_model:    "two_stage_gp"       # two_stage_gp | physics_sec | physics_sec_gp_residual_oof
+  r_kappa_model: "two_stage_gp"      # two_stage_gp | bounded_r_kappa_gp | physics_r_kappa
 
 figures:
   dpi:    300
   format: png
+
+physics:
+  epsilon: 1.0e-9          # small constant for log/logit transforms
+
+  # Monte Carlo samples for Λκ uncertainty propagation (Alternative B, ablation only)
+  lk_mc_samples: 50
+
+  # Engineering constraints applied before Pareto ranking
+  pareto_constraints:
+    r_kappa_min: 0.0       # reject candidates with R_κ below this
+    sec_max: 100.0         # reject candidates with SEC above this (kWh/m³); set high to disable
