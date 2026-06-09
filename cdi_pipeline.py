@@ -113,15 +113,15 @@ def _metrics(desal, regen, conc, flow, potential, cid):
 
     # Λκ: conductivity reduction per unit charge (∫Δκ dt / ∫I dt)
     delta_k    = np.clip(kappa[0] - kappa, 0, None)
-    int_charge = np.trapz(np.abs(i_des), dx=1.0)          # mC
-    lambda_k   = np.trapz(delta_k, dx=1.0) / int_charge if int_charge > 0 else np.nan
+    int_charge = np.trapezoid(np.abs(i_des), dx=1.0)          # mC
+    lambda_k   = np.trapezoid(delta_k, dx=1.0) / int_charge if int_charge > 0 else np.nan
 
     r_kappa = (kappa[0] - kappa.min()) / kappa[0] if kappa[0] > 0 else np.nan
 
     # SEC: gross energy during desalination phase / volume processed
     flow_m3s = flow * 1e-6 / 60
     vol_m3   = flow_m3s * len(desal)
-    w_wh     = np.trapz(np.abs(i_des) * 1e-3 * potential, dx=1.0) / 3600
+    w_wh     = np.trapezoid(np.abs(i_des) * 1e-3 * potential, dx=1.0) / 3600
     sec      = w_wh / (vol_m3 * 1000) if vol_m3 > 0 else np.nan   # kWh/m³
 
     return dict(conc=conc, flow=flow, potential=potential, cycle_id=cid,
